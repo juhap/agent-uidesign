@@ -6,25 +6,40 @@
     <title>UI design mockups</title>
     <style>
       * { box-sizing: border-box; }
-      body { margin: 0; background: #111; }
-      a { position: fixed; z-index: 1; top: 1rem; right: 1rem; padding: .5rem .75rem; border-radius: .4rem; background: rgba(17, 17, 17, .72); color: white; font: 14px system-ui, sans-serif; text-decoration: none; }
-      main { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: #111; }
-      img { display: block; width: 100%; height: auto; }
+      body { margin: 0; background: #111; color: #f4f4f5; font-family: system-ui, sans-serif; }
+      main { max-width: 1440px; margin: 0 auto; padding: 2rem; }
+      h1 { margin: 0 0 2rem; font-size: 1.125rem; font-weight: 500; }
+      section { margin: 0 0 3rem; }
+      h2 { margin: 0 0 1.25rem; font-size: 1.5rem; }
+      h3 { margin: 1.5rem 0 .75rem; font-size: 1rem; font-weight: 500; }
+      .preview-link { color: #fff; font-size: .875rem; text-underline-offset: .2em; }
+      .screenshots { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .75rem; }
+      img { display: block; width: 100%; height: auto; border-radius: .25rem; }
     </style>
   </head>
   <body>
-    <a href="https://juhapalomaki.fi/blog/openai-codex-ui-model-comparison/">Blog post</a>
-    <main id="screenshots"></main>
+    <main id="mockups"></main>
     <script>
-      const screenshots = [
-        'luna-high-issue-details.png', 'luna-high-issue-new.png', 'luna-high-issues.png', 'luna-high-projects.png', 'luna-high-statuses.png',
-        'luna-low-issue-details.png', 'luna-low-issue-new.png', 'luna-low-issues.png', 'luna-low-projects.png', 'luna-low-statuses.png',
-        'sol-low-issue-details.png', 'sol-low-issue-new.png', 'sol-low-issues.png', 'sol-low-projects.png', 'sol-low-statuses.png',
-        'sol-medium-issue-details.png', 'sol-medium-issue-new.png', 'sol-medium-issues.png', 'sol-medium-projects.png', 'sol-medium-statuses.png',
-        'terra-high-issue-details.png', 'terra-high-issue-new.png', 'terra-high-issues.png', 'terra-high-projects.png', 'terra-high-statuses.png',
-        'terra-low-issue-details.png', 'terra-low-issue-new.png', 'terra-low-issues.png', 'terra-low-projects.png', 'terra-low-statuses.png'
+      const models = [
+        ['Sol', [['medium', 'sol-medium'], ['low', 'sol-low']]],
+        ['Terra', [['high', 'terra-high'], ['low', 'terra-low']]],
+        ['Luna', [['high', 'luna-high'], ['low', 'luna-low']]]
       ];
-      document.querySelector('#screenshots').innerHTML = screenshots.map((filename) => `<img src="screenshots/${filename}" alt="" />`).join('');
+      const screens = ['issues', 'issue-new', 'issue-details', 'projects', 'statuses'];
+      document.querySelector('#mockups').innerHTML = `
+        <h1><a class="preview-link" href="https://juhapalomaki.fi/blog/openai-codex-ui-model-comparison/">Blog post</a></h1>
+        ${models.map(([name, configurations]) => `
+          <section>
+            <h2>${name}</h2>
+            ${configurations.map(([effort, prefix]) => `
+              <h3>${effort} — <a class="preview-link" href="${name.toLowerCase()}/${effort}/">Open full preview</a></h3>
+              <div class="screenshots">
+                ${screens.map((screen) => `<img src="screenshots/${prefix}-${screen}.png" alt="" loading="lazy" />`).join('')}
+              </div>
+            `).join('')}
+          </section>
+        `).join('')}
+      `;
     </script>
   </body>
 </html>
