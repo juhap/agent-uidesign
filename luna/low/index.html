@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clarity — Issue tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">✦</span><span>clarity</span></div>
+      <div class="workspace-switcher"><span class="avatar avatar-indigo">AC</span><span><b>Acme Corp</b><small>Workspace</small></span><span class="chevron">⌄</span></div>
+      <nav>
+        <p class="nav-label">WORKSPACE</p>
+        <a href="#issues" data-route="issues" class="nav-item active"><span>⊞</span> Issues <span class="nav-count">12</span></a>
+        <a href="#projects" data-route="projects" class="nav-item"><span>▦</span> Projects</a>
+        <p class="nav-label nav-label-settings">SETTINGS</p>
+        <a href="#settings/statuses" data-route="settings/statuses" class="nav-item"><span>◉</span> Statuses</a>
+        <a href="#settings/labels" data-route="settings/labels" class="nav-item"><span>⌁</span> Labels</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="help-card"><span>?</span><div><b>Need a hand?</b><small>Read the quick guide</small></div><span>↗</span></div><div class="user"><span class="avatar avatar-yellow">JD</span><span><b>Jamie Doe</b><small>Product manager</small></span><span class="dots">•••</span></div></div>
+    </aside>
+    <main class="main"><header class="topbar"><button class="mobile-menu" id="mobileMenu">☰</button><div class="breadcrumbs"><span>Workspace</span><b>/</b><strong id="crumb">Issues</strong></div><div class="top-actions"><button class="icon-button">⌘ K</button><button class="icon-button">♧</button><button class="avatar avatar-yellow">JD</button></div></header><div id="view" class="content"></div></main>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

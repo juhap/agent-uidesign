@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orbit — Issue tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand"><span class="brand-mark">◆</span> orbit</div>
+        <button class="new-issue" id="newIssueBtn"><span>＋</span> New issue <kbd>c</kbd></button>
+        <nav>
+          <p class="nav-label">Workspace</p>
+          <button class="nav-item active" data-view="issues"><span>⌕</span> Issues <em id="issueCount">4</em></button>
+          <button class="nav-item" data-view="projects"><span>◫</span> Projects</button>
+          <p class="nav-label settings-label">Settings</p>
+          <button class="nav-item" data-view="settings"><span>⚙</span> Statuses & labels</button>
+        </nav>
+        <div class="profile"><span class="avatar">AM</span><span><b>Alex Morgan</b><small>Acme Studio</small></span><span class="chevron">⌄</span></div>
+      </aside>
+      <main class="content">
+        <header class="mobile-header"><button id="menuBtn">☰</button><div class="brand"><span class="brand-mark">◆</span> orbit</div><button id="mobileCreate">＋</button></header>
+        <section id="issuesView" class="view active">
+          <div class="page-head"><div><p class="eyebrow">All work</p><h1>Issues</h1></div><button class="primary create-trigger">＋ New issue</button></div>
+          <div class="searchbar"><span>⌕</span><input id="searchInput" placeholder="Search issues by title or description…" /><kbd>⌘ K</kbd></div>
+          <div class="filters">
+            <button class="filter selected" data-filter="project">Project <span>⌄</span></button>
+            <button class="filter selected" data-filter="status">Status <span>⌄</span></button>
+            <button class="filter selected" data-filter="label">Label <span>⌄</span></button>
+            <button class="clear-filters" id="clearFilters">Clear filters</button>
+          </div>
+          <div class="list-head"><span id="resultCount">4 issues</span><button class="sort">Updated <span>↕</span></button></div>
+          <div class="issue-list" id="issueList"></div>
+        </section>
+        <section id="detailView" class="view">
+          <button class="back" id="backToIssues">← All issues</button>
+          <div id="issueDetail"></div>
+        </section>
+        <section id="createView" class="view narrow">
+          <button class="back" id="cancelCreate">← Back</button>
+          <div class="page-head"><div><p class="eyebrow">New work item</p><h1>Create issue</h1></div></div>
+          <form id="createForm" class="issue-form">
+            <label>Title<input id="newTitle" required placeholder="What needs to be done?" autofocus /></label>
+            <label>Description <span class="hint">Markdown supported</span><div class="editor"><div class="editor-tools"><b>B</b><i>I</i><span>⌘</span><span>• List</span><span>↗ Link</span></div><textarea id="newBody" placeholder="Add context, requirements, or useful links…"></textarea></div></label>
+            <div class="form-row"><label>Project<select id="newProject"></select></label><label>Status<select id="newStatus"></select></label></div>
+            <label>Labels<div class="label-picker" id="newLabels"></div></label>
+            <div class="form-actions"><button type="button" class="secondary" id="discardCreate">Discard</button><button class="primary" type="submit">Create issue</button></div>
+          </form>
+        </section>
+        <section id="projectsView" class="view narrow"><div class="page-head"><div><p class="eyebrow">Workspace</p><h1>Projects</h1></div><button class="primary" id="addProject">＋ New project</button></div><div class="card-list" id="projectList"></div></section>
+        <section id="settingsView" class="view narrow"><div class="page-head"><div><p class="eyebrow">Workspace settings</p><h1>Statuses & labels</h1></div></div><div class="settings-tabs"><button class="tab active" data-settings="statuses">Statuses</button><button class="tab" data-settings="labels">Labels</button></div><p class="settings-copy" id="settingsCopy"></p><div class="manage-list" id="settingsList"></div><button class="secondary add-setting" id="addSetting">＋ Add status</button></section>
+      </main>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
