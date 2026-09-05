@@ -21,6 +21,7 @@
     <main id="mockups"></main>
     <script>
       const models = [
+        ['Astra', [['low', 'astra-low']]],
         ['Sol', [['medium', 'sol-medium'], ['low', 'sol-low']]],
         ['Terra', [['high', 'terra-high'], ['low', 'terra-low']]],
         ['Luna', [['high', 'luna-high'], ['low', 'luna-low']]]
@@ -33,6 +34,7 @@
             <h2>${name}</h2>
             ${configurations.map(([effort, prefix]) => `
               <h3>${effort} — <a class="preview-link" href="${name.toLowerCase()}/${effort}/">Open full preview</a></h3>
+              ${name === 'Astra' ? `<p><a class="preview-link" href="astra/low/index.html" download="astra-low.html">Download HTML</a></p>` : ''}
               <div class="screenshots">
                 ${screens.map((screen) => `<img src="screenshots/${prefix}-${screen}.png" alt="" loading="lazy" />`).join('')}
               </div>
