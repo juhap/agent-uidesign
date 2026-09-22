@@ -34,7 +34,7 @@
             <h2>${name}</h2>
             ${configurations.map(([effort, prefix]) => `
               <h3>${effort} — <a class="preview-link" href="${name.toLowerCase()}/${effort}/">Open full preview</a></h3>
-              ${name === 'Astra' ? `<p><a class="preview-link" href="astra/low/index.html" download="astra-low.html">Download HTML</a></p>` : ''}
+              <p><a class="preview-link" href="https://github.com/juhap/agent-uidesign/tree/main/${name.toLowerCase()}/${effort}/">View source on GitHub</a></p>
               <div class="screenshots">
                 ${screens.map((screen) => `<img src="screenshots/${prefix}-${screen}.png" alt="" loading="lazy" />`).join('')}
               </div>
